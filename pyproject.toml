@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "ban-nft-spam"
+version = "1.0.0"
+description = "A Telegram bot to ban NFT spam comments"
+authors = ["flexagoon <code@fxgn.dev>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+python-dotenv = "^1.0.1"
+aiogram = "^3.3.0"
+requests = "^2.31.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
