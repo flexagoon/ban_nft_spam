@@ -10,7 +10,7 @@ readme = "README.md"
 python = "^3.12"
 python-dotenv = "^1.0.1"
 aiogram = "^3.3.0"
-requests = "^2.31.0"
+httpx = "^0.26.0"
 
 
 [build-system]

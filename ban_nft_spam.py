@@ -2,7 +2,7 @@ import asyncio
 from os import getenv
 from urllib.parse import urlparse
 
-import requests
+import httpx
 from dotenv import load_dotenv
 from aiogram import Dispatcher, Bot, F
 from aiogram.types import Message
@@ -23,12 +23,13 @@ async def message_handler(message: Message) -> None:
             if not (url := urlparse(url_text)).scheme:
                 url = urlparse("https://" + url_text)
             url = url._replace(path="/encryption.js")
-            resp = requests.head(
-                url.geturl(),
-                headers={
-                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; rv:122.0) Gecko/20100101 Firefox/122.0"
-                },
-            )
+            async with httpx.AsyncClient() as client:
+                resp = await client.head(
+                    url.geturl(),
+                    headers={
+                        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; rv:122.0) Gecko/20100101 Firefox/122.0"
+                    }
+                )
             if resp.status_code == 200:
                 spam = True
                 break
