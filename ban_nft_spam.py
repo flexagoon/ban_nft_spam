@@ -15,7 +15,7 @@ dp = Dispatcher()
 
 
 @dp.message(F.entities)
-async def message_handler(message: Message):
+async def message_handler(message: Message) -> None:
     spam = False
     for entity in message.entities:
         if entity.type == "url":
@@ -38,7 +38,7 @@ async def message_handler(message: Message):
         await message.delete()
 
 
-async def main():
+async def main() -> None:
     bot = Bot(TOKEN)
     await dp.start_polling(bot)
 
