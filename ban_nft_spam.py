@@ -33,7 +33,7 @@ async def message_handler(message: Message):
                 spam = True
                 break
     if spam:
-        if message.chat.type == "group":
+        if message.chat.type == "group" or message.chat.type == "supergroup":
             await message.chat.ban(user_id=message.from_user.id)
         await message.delete()
 
